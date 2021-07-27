@@ -10,7 +10,8 @@ import UIKit
 class ChecklistTableViewController: UITableViewController {
     
     // TODO 3: Here, create an instance of an object of the class ChecklistItemData and initialize it
-
+    var myCheckList = CheckListItemData()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,7 +33,7 @@ class ChecklistTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // TODO 4: Instead of 0, return the total number of items in our items in array found inside the ChecklistItemData
-        return 0
+        return (self.myCheckList.list.count)
     }
 
     // This method decides how tall the rows are in our UITableView, can also be done in the Interface Builder
@@ -51,23 +52,21 @@ class ChecklistTableViewController: UITableViewController {
         // Creating an instance of the reference of the labels and views inside our UITableViewCell
         let descriptionLabel = cell.viewWithTag(1000) as! UILabel
         let circleView = cell.viewWithTag(1001) as! UIView
-        
-        // Putting a corner radius on our UIView
+              // Putting a corner radius on our UIView
         circleView.layer.cornerRadius = circleView.frame.size.height / 2
         
         // TODO 5: Create a constant called itemFromList that access invidual items in our ChecklistItems array
         // Hint: To Access every item you can use [indexPath.row]
-        
+        let itemFromList = myCheckList.list[indexPath.row]
         
         
         // TODO 6: Display the descriptionText property value from itemFromList on our label text
       
-     
+        descriptionLabel.text = itemFromList.descriptionText
         
         // TODO 7: Call configureCheckmark() method here by passing cell and indexPath in the parameters
      
-
-        
+        configureCheckmark(for: cell, at: indexPath)
         
         return cell
     }
@@ -79,7 +78,7 @@ class ChecklistTableViewController: UITableViewController {
      
         // TODO 8: Create a constant called checklistIsChecked that stores that the check list items array inside our ChecklistItemData and then reference each value by adding [indexPath.row] at the end
         
-        
+        let checkListIsChecked = myCheckList.list[indexPath.row].isChecked
         
         
         if let cell = tableView.cellForRow(at: indexPath) {
@@ -87,18 +86,11 @@ class ChecklistTableViewController: UITableViewController {
             // TODO 9: Check if the isChecked property of every check list item is true or false
             // If the check list item's isChecked equals to true, change it to false, and vice-versa.
 
-            
-            
-            
-            
-            
-            
-            
+            myCheckList.list[indexPath.row].isChecked = !checkListIsChecked
             
             
           // TODO 10: Call configureCheckmark() method here by passing in the cell and indexPath as parameters
-            
-            
+            configureCheckmark(for: cell, at: indexPath)
             
         }
         
@@ -110,40 +102,32 @@ class ChecklistTableViewController: UITableViewController {
         
         
         // TODO 11: Create a constant called checklistIsChecked that stores that the check list items array inside our ChecklistItemData and then reference each value by adding [indexPath.row] at the end
+        let checklistIsChecked = myCheckList.list[indexPath.row].isChecked
+              
         
-        
-        
-
-        
-        
-
         // Already done for you
         let descriptionLabel = cell.viewWithTag(1000) as! UILabel
         let circleView = cell.viewWithTag(1001) as! UIView
         
         // TODO 12: Check the isChecked property of the check list item using the constant defined from above.
         
+        if checklistIsChecked {
         // If the value is true
         // 1. Change the cell.accessoryType to .checkmark
+            cell.accessoryType = .checkmark
         // 2. Change the descriptionLabel.textColor to UIColor.orange
+            descriptionLabel.textColor = UIColor.orange
         // 3. Change the circleView.backgroundColor to UIColor.orange
-        
+            circleView.backgroundColor = UIColor.orange
+        } else {
         // If the value is false
         // 1. Change the cell.accessoryType to .none
+            cell.accessoryType = .none
         // 2. Change the descriptionLabel.textColor to UIColor.lightGray
+            descriptionLabel.textColor = UIColor.lightGray
         // 3. Change the circleView.backgroundColor to UIColor.lightGray
-     
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+            circleView.backgroundColor = UIColor.lightGray
+        }
         
         // You don't have to do anything else here
         self.checkIfAllItemsChecked()
@@ -154,22 +138,24 @@ class ChecklistTableViewController: UITableViewController {
         
         var uncheckedItems = 0
         
-        for item in self.checklistItems.checklistitems {
+        for item in self.myCheckList.list {
             
             if !item.isChecked {
                 uncheckedItems += 1
+                break
             }
         }
         
         if uncheckedItems == 0 {
-            self.performSegue(withIdentifier: "goToSuccess", sender: self)
             
-            for item in self.checklistItems.checklistitems {
+            for item in self.myCheckList.list {
                 
-                item.isChecked = false
+                item.uncheck()
             }
             
             tableView.reloadData()
+
+            self.performSegue(withIdentifier: "goToSuccess", sender: self)
         }
     }
 
@@ -198,8 +184,8 @@ class ChecklistTableViewController: UITableViewController {
             let firstTextField = alertController.textFields![0] as UITextField
             
             if let newItem = firstTextField.text {
-                let newChecklistItem = ChecklistItem(text: newItem)
-                self.checklistItems.checklistitems.append(newChecklistItem)
+                let newChecklistItem = CheckListItem(item: newItem)
+                self.myCheckList.list.append(newChecklistItem)
                 self.tableView.reloadData()
             }
         })
