@@ -1,9 +1,7 @@
 # App Challenge Week 7 - Phoenix Checklists
 **Deadline: Friday**
 
-Download the starter project files as .zip and extract to your desktop or your folder of preference.
-
-Or you can go your Terminal or Commandline and copy paste: git clone https://github.com/hikreschool/phoenix-list
+Download the starter project files as .zip and extract to your desktop or your folder of preference.Or you can go your Terminal or Commandline and copy paste: git clone https://github.com/hikreschool/phoenix-list
 
 **Important: Aside from the previous App Challenges, you will also be using what you've learned from hands-on activities**
 
@@ -36,6 +34,8 @@ Or you can go your Terminal or Commandline and copy paste: git clone https://git
 5. THen, proceed with the logic of the app
 6. Be mindful on doing one particular task at a time
 
+# Submission
+-Once finished, submit it through Git & Github by creating a Git branch of yours and pushing it to this repository.
 
 # App Demo
  
