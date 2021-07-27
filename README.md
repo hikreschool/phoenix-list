@@ -16,8 +16,7 @@ Or you can go your Terminal or Commandline and copy paste: git clone https://git
 # Important keywords
 1. **IndexPath** - Index paths describe an item’s position inside a table view or collection view, storing both its section and its position inside that section. For example, the first row in a table would have section 0, row 0, whereas the eighth row in the fourth section would have section 3, row 7. You’ll be given index paths fairly frequently by iOS, for example when the user tapped on a row, or when UIKit needs to know whether a certain item can be edited.
 
-2. **What are the differences between Rows and Cells? **
-Cells contain labels, images, etc. There are as many rows as your data source items. Cells are reused and shown only in rows that are visible. A row is a place: e.g., section 0, row 3.
+2. **What are the differences between Rows and Cells?** - Cells contain labels, images, etc. There are as many rows as your data source items. Cells are reused and shown only in rows that are visible. A row is a place: e.g., section 0, row 3.
 
 # Complementary resources
 1. UITableViewControllers: https://www.ralfebert.de/ios-examples/uikit/uitableviewcontroller/
