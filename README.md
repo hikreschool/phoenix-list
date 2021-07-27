@@ -1,5 +1,5 @@
 # App Challenge Week 7 - Phoenix Checklists
-Deadline: Friday
+**Deadline: Friday**
 
 Download the starter project files as .zip and extract to your desktop or your folder of preference.
 
