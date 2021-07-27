@@ -5,7 +5,7 @@ Download the starter project files as .zip and extract to your desktop or your f
 
 Or you can go your Terminal or Commandline and copy paste: git clone https://github.com/hikreschool/phoenix-list
 
-**Important: You will be using what you've learned from both App Challenge #1 (Oblique Strategies) and App Challenge # 2 (Phoenix Profiles)**
+**Important: Aside from the previous App Challenges, you will also be using what you've learned from hands-on activities**
 
 # What You Will Be Using
 1. UINavigationController
