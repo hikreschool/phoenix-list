@@ -7,7 +7,7 @@ Or you can go your Terminal or Commandline and copy paste: git clone https://git
 
 **Important: Aside from the previous App Challenges, you will also be using what you've learned from hands-on activities**
 
-# What You Will Be Using
+# What You Will Be Learning More
 1. UINavigationController
 2. UITableViewController
 3. Table View CustomCells
@@ -19,9 +19,9 @@ Or you can go your Terminal or Commandline and copy paste: git clone https://git
 2. **What are the differences between Rows and Cells?** - Cells contain labels, images, etc. There are as many rows as your data source items. Cells are reused and shown only in rows that are visible. A row is a place: e.g., section 0, row 3.
 
 # Complementary resources
-1. UITableViewControllers: https://www.ralfebert.de/ios-examples/uikit/uitableviewcontroller/
-2. UIAlertControllers: https://learnappmaking.com/uialertcontroller-alerts-swift-how-to/
-3. Table View CustomCells: https://www.ralfebert.de/ios-examples/uikit/uitableviewcontroller/custom-cells/
+1. **UITableViewControllers**: https://www.ralfebert.de/ios-examples/uikit/uitableviewcontroller/
+2. **UIAlertControllers**: https://learnappmaking.com/uialertcontroller-alerts-swift-how-to/
+3. **Table View CustomCells**: https://www.ralfebert.de/ios-examples/uikit/uitableviewcontroller/custom-cells/
 
 # Notes
 1. This apps presents more thinking challenge in comparison the previous app challenges
