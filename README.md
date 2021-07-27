@@ -10,10 +10,23 @@ Or you can go your Terminal or Commandline and copy paste: git clone https://git
 # What You Will Be Using
 1. UINavigationController
 2. UITableViewController
-3. CustomCells
+3. Table View CustomCells
 4. Intro Delegate and Protocol methods
 
-All the data you will be displaying in the app can be found on the PDF file.
+# Important keywords
+1. IndexPath - Index paths describe an item’s position inside a table view or collection view, storing both its section and its position inside that section. For example, the first row in a table would have section 0, row 0, whereas the eighth row in the fourth section would have section 3, row 7.
+
+You’ll be given index paths fairly frequently by iOS, for example when the user tapped on a row, or when UIKit needs to know whether a certain item can be edited.
+
+When working with collection views, you should use the item number of an index path rather than its row number, because row numbers mean different things when multiple items can share the same row.
+
+2. What are the differences between Rows and Cells? 
+Cells contain labels, images, etc. There are as many rows as your data source items. Cells are reused and shown only in rows that are visible. A row is a place: e.g., section 0, row 3.
+
+# Complementary resources
+1. UITableViewControllers: https://www.ralfebert.de/ios-examples/uikit/uitableviewcontroller/
+2. UIAlertControllers: https://learnappmaking.com/uialertcontroller-alerts-swift-how-to/
+3. Table View CustomCells: https://www.ralfebert.de/ios-examples/uikit/uitableviewcontroller/custom-cells/
 
 # Notes
 1. This apps presents more thinking challenge in comparison the previous app challenges
