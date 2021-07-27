@@ -39,7 +39,7 @@ Or you can go your Terminal or Commandline and copy paste: git clone https://git
 
 # App Demo
  
- <img src="/mockup-app-challenge3.png"/>
+ <img src="/demo-app-challenge-4.gif"/>
 
 
 
