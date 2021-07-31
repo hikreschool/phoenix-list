@@ -10,15 +10,17 @@ import UIKit
 class ChecklistTableViewController: UITableViewController {
     
     // TODO 3: Here, create an instance of an object of the class ChecklistItemData and initialize it
+    
+    var ChecklistItem  = ChecklistItemData()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
     
     
@@ -32,7 +34,7 @@ class ChecklistTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // TODO 4: Instead of 0, return the total number of items in our items in array found inside the ChecklistItemData
-        return 0
+        return ChecklistItem.toDos.count
     }
 
     // This method decides how tall the rows are in our UITableView, can also be done in the Interface Builder
@@ -58,16 +60,21 @@ class ChecklistTableViewController: UITableViewController {
         // TODO 5: Create a constant called itemFromList that access invidual items in our ChecklistItems array
         // Hint: To Access every item you can use [indexPath.row]
         
+        let itemFromList = ChecklistItem.toDos[indexPath.row]
         
         
         // TODO 6: Display the descriptionText property value from itemFromList on our label text
       
+        descriptionLabel.text = itemFromList.descriptionText
      
         
         // TODO 7: Call configureCheckmark() method here by passing cell and indexPath in the parameters
      
+        func configureCheckmark(for cell: UIView, at indexPath: IndexPath) {
+            
+            configureCheckmark(for: cell, at: indexPath)
 
-        
+        }
         
         return cell
     }
@@ -79,7 +86,7 @@ class ChecklistTableViewController: UITableViewController {
      
         // TODO 8: Create a constant called checklistIsChecked that stores that the check list items array inside our ChecklistItemData and then reference each value by adding [indexPath.row] at the end
         
-        
+        let checklistIsChecked = ChecklistItem.toDos[indexPath.row]
         
         
         if let cell = tableView.cellForRow(at: indexPath) {
@@ -88,16 +95,17 @@ class ChecklistTableViewController: UITableViewController {
             // If the check list item's isChecked equals to true, change it to false, and vice-versa.
 
             
-            
-            
-            
-            
-            
-            
+            if ChecklistItem.toDos[indexPath.row].isChecked {
+                ChecklistItem.toDos[indexPath.row].isChecked = false
+            } else {
+                ChecklistItem.toDos[indexPath.row].isChecked = true
+                
+            }
             
             
           // TODO 10: Call configureCheckmark() method here by passing in the cell and indexPath as parameters
             
+            configureCheckmark(for: cell, at: indexPath)
             
             
         }
@@ -112,7 +120,8 @@ class ChecklistTableViewController: UITableViewController {
         // TODO 11: Create a constant called checklistIsChecked that stores that the check list items array inside our ChecklistItemData and then reference each value by adding [indexPath.row] at the end
         
         
-        
+        let checklistIsChecked = ChecklistItem.toDos[indexPath.row]
+
 
         
         
@@ -133,16 +142,15 @@ class ChecklistTableViewController: UITableViewController {
         // 2. Change the descriptionLabel.textColor to UIColor.lightGray
         // 3. Change the circleView.backgroundColor to UIColor.lightGray
      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        if checklistIsChecked.isChecked == true {
+            cell.accessoryType = .checkmark
+            descriptionLabel.textColor = UIColor.orange
+            circleView.backgroundColor = UIColor.orange
+        } else {
+            cell.accessoryType = .none
+            descriptionLabel.textColor = UIColor.lightGray
+            circleView.backgroundColor = UIColor.lightGray
+            }
         
         
         // You don't have to do anything else here
@@ -154,7 +162,7 @@ class ChecklistTableViewController: UITableViewController {
         
         var uncheckedItems = 0
         
-        for item in self.checklistItems.checklistitems {
+        for item in self.ChecklistItem.toDos {
             
             if !item.isChecked {
                 uncheckedItems += 1
@@ -164,7 +172,7 @@ class ChecklistTableViewController: UITableViewController {
         if uncheckedItems == 0 {
             self.performSegue(withIdentifier: "goToSuccess", sender: self)
             
-            for item in self.checklistItems.checklistitems {
+            for item in self.ChecklistItem.toDos {
                 
                 item.isChecked = false
             }
@@ -198,8 +206,8 @@ class ChecklistTableViewController: UITableViewController {
             let firstTextField = alertController.textFields![0] as UITextField
             
             if let newItem = firstTextField.text {
-                let newChecklistItem = ChecklistItem(text: newItem)
-                self.checklistItems.checklistitems.append(newChecklistItem)
+                let newChecklistItem = Phoenix_Checklist_Starter.ChecklistItem(descriptionText: newItem, isChecked: false)
+                self.ChecklistItem.toDos.append(newChecklistItem)
                 self.tableView.reloadData()
             }
         })
