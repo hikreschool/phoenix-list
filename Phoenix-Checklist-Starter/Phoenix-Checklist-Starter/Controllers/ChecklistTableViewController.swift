@@ -12,15 +12,7 @@ class ChecklistTableViewController: UITableViewController {
     // TODO 3: Here, create an instance of an object of the class ChecklistItemData and initialize it
     let ChecklistItems = ChecklistItemData()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+    
     
     
     
@@ -33,7 +25,7 @@ class ChecklistTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // TODO 4: Instead of 0, return the total number of items in our items in array found inside the ChecklistItemData
-        return 6
+        return ChecklistItems.ChecklistItemInstance.count
     }
 
     // This method decides how tall the rows are in our UITableView, can also be done in the Interface Builder
